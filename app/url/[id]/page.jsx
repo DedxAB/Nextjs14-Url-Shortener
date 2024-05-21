@@ -5,11 +5,11 @@ export default async function page({ params }) {
   const { id } = params;
   const data = await fetchUrlById(id);
   const actualData = data?.data ? data.data : null;
-  console.log(actualData); 
+//   console.log(actualData);
 
-//   if (actualData) {
-//     redirect(actualData?.originalUrl);
-//   }
+  if (actualData) {
+    redirect(actualData?.originalUrl);
+  }
 
   return (
     <div>

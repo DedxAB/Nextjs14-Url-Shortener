@@ -9,7 +9,7 @@ export const GET = async (_req, { params }) => {
     const url = await Url.findOneAndUpdate(
       { shortUrl: id },
       {
-        $push: { analytics: { timestamp: new Date() } },
+        $push: { analytics: { time: new Date() } },
       }
     );
     if (!url) {
