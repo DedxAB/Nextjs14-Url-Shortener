@@ -14,7 +14,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./ui/alert-dialog";
-import { Button } from "./ui/button";
 
 const DeleteButton = ({ id }) => {
   const [conformationMessage, setConformationMessage] = useState(false);
@@ -26,8 +25,18 @@ const DeleteButton = ({ id }) => {
       const toastId = toast.loading("Deleting url...");
 
       try {
+        const res = await fetch(`/api/short-url/${id}`, {
+          method: "DELETE",
+        });
+        if (!res.ok) {
+          const { error } = await res.json();
+          throw new Error(error);
+        }
+        toast.success("Url deleted successfully", { id: toastId });
       } catch (error) {
         toast.error("Failed to delete url", { id: toastId });
+      } finally {
+        router.refresh();
       }
       setConformationMessage(false);
     }
