@@ -11,8 +11,8 @@ export default async function page({ params }) {
   }
 
   return (
-    <div>
-      <h1>Redirecting...</h1>
+    <div className="my-5">
+      <h1>Sorry the url is not found!</h1>
     </div>
   );
 }

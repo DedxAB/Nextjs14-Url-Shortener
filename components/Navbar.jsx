@@ -1,12 +1,25 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { SignOutButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { ToggleTheme } from "./ToggleTheme";
+import AccountProfile from "./AccountProfile";
+import { currentUser } from "@clerk/nextjs/server";
 
-export default function Navbar() {
+export default async function Navbar() {
+  const user = await currentUser();
+  const imageUrl = user?.imageUrl;
+  const name = user?.fullName;
+
   return (
     <nav className="max-w-3xl relative mx-auto px-4 flex justify-between items-center py-4">
-      <Link href={`/`}>DedxUrl</Link>
+      <Link href="/">
+        <h1 className={`font-semibold text-lg md:text-xl`}>
+          Dedx
+          <span className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
+            Url
+          </span>
+        </h1>
+      </Link>
       <SignedIn>
         <div className="flex items-center gap-2">
           <ToggleTheme />
@@ -16,7 +29,7 @@ export default function Navbar() {
           <Link href={`/dashboard`}>
             <Button>Dashboard</Button>
           </Link>
-          <SignOutButton>Sign Out</SignOutButton>
+          <AccountProfile image={imageUrl} name={name} />
         </div>
       </SignedIn>
       <SignedOut>
