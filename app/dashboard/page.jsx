@@ -4,17 +4,12 @@ import {
   Table,
   TableBody,
   TableCaption,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import DeleteButton from "@/components/DeleteButton";
 import React from "react";
-import Link from "next/link";
-import { baseUrl } from "@/helper/constants";
-import { FlaskConical } from "lucide-react";
-import CopyButton from "@/components/CopyButton";
+import TableData from "@/components/TableData";
 
 export default async function Dashboard() {
   const user = await currentUser();
@@ -28,9 +23,16 @@ export default async function Dashboard() {
   return (
     <div className="my-5">
       <h2 className="">Dashboard</h2>
+      <div>
+        <h2 className="mt-5">
+          Welcome, {currentUserData?.name}{" "}
+          <span className="text-gray-500">({currentUserData?.email})</span>
+        </h2>
+        <p className="text-gray-500">
+          You have created {shortUrls?.length} short URLs.
+        </p>
+      </div>
       <div className="mt-5">
-        {/* <h3>Short URLs</h3> */}
-
         <Table>
           <TableCaption>
             A table showing the short URLs created by you
@@ -44,30 +46,7 @@ export default async function Dashboard() {
           </TableHeader>
           <TableBody>
             {shortUrls.map((url) => {
-              return (
-                <React.Fragment key={url?._id}>
-                  <TableRow>
-                    <TableCell className="font-medium">
-                      {url?.originalUrl.slice(0, 50)}
-                      {url?.originalUrl.length > 50 ? "..." : ""}
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <Link href={`/url/${url?.shortUrl}`}>
-                          {url?.shortUrl}
-                        </Link>
-                        <CopyButton url={`${baseUrl}/url/${url?.shortUrl}`} />
-                      </div>
-                    </TableCell>
-                    <TableCell className="text-right flex items-center justify-end gap-3">
-                      <Link href={`/url/${url?._id}/analysis`}>
-                        <FlaskConical className="w-4 h-4" />
-                      </Link>
-                      <DeleteButton id={url?._id} />
-                    </TableCell>
-                  </TableRow>
-                </React.Fragment>
-              );
+              return <TableData url={url} key={url?._id} />;
             })}
           </TableBody>
         </Table>

@@ -7,8 +7,6 @@ export default async function Analysis({ params }) {
 
   const { analytics } = data?.data;
 
-  console.log(analytics);
-
   return (
     <div className="my-5">
       <h2>Analysis</h2>
