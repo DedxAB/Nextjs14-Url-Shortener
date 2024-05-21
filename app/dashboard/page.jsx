@@ -60,7 +60,7 @@ export default async function Dashboard() {
                       </div>
                     </TableCell>
                     <TableCell className="text-right flex items-center justify-end gap-3">
-                      <Link href={`/url/analysis`}>
+                      <Link href={`/url/${url?._id}/analysis`}>
                         <FlaskConical className="w-4 h-4" />
                       </Link>
                       <DeleteButton id={url?._id} />
