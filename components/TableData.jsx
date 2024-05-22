@@ -24,11 +24,11 @@ export default function TableData({ url }) {
         </TableCell>
         <TableCell className="text-right flex items-center justify-end gap-3">
           <Link href={`/url/${url?._id}/analysis`}>
-            <div className="border p-2 rounded-full">
-              {url?.analytics?.length}
-              <span className="text-gray-500">
+            <div className="border p-2 rounded-full flex items-center gap-1">
+              <p>{url?.analytics?.length}</p>
+              <p className="text-gray-500">
                 {url?.analytics?.length > 1 ? " visits" : " visit"}
-              </span>
+              </p>
             </div>
             {/* <FlaskConical className="w-4 h-4" /> */}
           </Link>

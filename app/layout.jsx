@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
               {children}
             </main>
             <Toaster richColors position="top-right" closeButton />
-            <footer className="w-full border-t mt-16 hidden sm:block">
+            <footer className="w-full border-t mt-16">
               <Footer />
             </footer>
           </ThemeProvider>
