@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
             <header className="w-full sticky top-0 left-0 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b z-20">
               <Navbar />
             </header>
-            <main className="max-w-3xl mx-auto mb-44 sm:mb-0 px-4 min-h-full sm:min-h-[120vh]">
+            <main className="max-w-3xl mx-auto mb-44 px-4 min-h-[120vh]">
               {children}
             </main>
             <Toaster richColors position="top-right" closeButton />
