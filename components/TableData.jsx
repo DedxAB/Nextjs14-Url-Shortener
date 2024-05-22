@@ -16,7 +16,9 @@ export default function TableData({ url }) {
         </TableCell>
         <TableCell>
           <div className="flex items-center gap-2">
-            <Link href={`/url/${url?.shortUrl}`}>{url?.shortUrl}</Link>
+            <Link href={`/url/${url?.shortUrl}`} target="_blank">
+              {url?.shortUrl}
+            </Link>
             <CopyButton url={`${baseUrl}/url/${url?.shortUrl}`} />
           </div>
         </TableCell>

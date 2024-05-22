@@ -33,9 +33,12 @@ export default async function Navbar() {
         </div>
       </SignedIn>
       <SignedOut>
-        <Link href={`/sign-in`}>
-          <Button>Sign In</Button>
-        </Link>
+        <div className="flex items-center justify-between gap-3">
+          <ToggleTheme />
+          <Link href={`/sign-in`}>
+            <Button>Sign In</Button>
+          </Link> 
+        </div>
       </SignedOut>
     </nav>
   );
