@@ -15,7 +15,7 @@ export default function TableData({ url }) {
           {url?.originalUrl.length > 50 ? "..." : ""}
         </TableCell>
         <TableCell>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 justify-between">
             <Link href={`/url/${url?.shortUrl}`} target="_blank">
               {url?.shortUrl}
             </Link>
@@ -23,14 +23,14 @@ export default function TableData({ url }) {
           </div>
         </TableCell>
         <TableCell className="text-right flex items-center justify-end gap-3">
-          <di>
-            {url?.analytics?.length}
-            <span className="text-gray-500">
-              {url?.analytics?.length > 1 ? " visits" : " visit"}
-            </span>
-          </di>
           <Link href={`/url/${url?._id}/analysis`}>
-            <FlaskConical className="w-4 h-4" />
+            <div className="border p-2 rounded-full">
+              {url?.analytics?.length}
+              <span className="text-gray-500">
+                {url?.analytics?.length > 1 ? " visits" : " visit"}
+              </span>
+            </div>
+            {/* <FlaskConical className="w-4 h-4" /> */}
           </Link>
           <DeleteButton id={url?._id} />
         </TableCell>

@@ -20,7 +20,7 @@ const DeleteButton = ({ id }) => {
 
   const router = useRouter();
 
-  const removeNote = async () => {
+  const removeUrl = async () => {
     if (conformationMessage) {
       const toastId = toast.loading("Deleting url...");
 
@@ -48,7 +48,7 @@ const DeleteButton = ({ id }) => {
         <AlertDialogTrigger asChild>
           <div
             onClick={() => setConformationMessage(true)}
-            className="cursor-pointer"
+            className="cursor-pointer border p-2 rounded-full"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@ const DeleteButton = ({ id }) => {
             >
               Cancel
             </AlertDialogCancel>
-            <AlertDialogAction className={`font-bold`} onClick={removeNote}>
+            <AlertDialogAction className={`font-bold`} onClick={removeUrl}>
               Continue
             </AlertDialogAction>
           </AlertDialogFooter>
