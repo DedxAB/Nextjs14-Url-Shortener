@@ -5,6 +5,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { validateUrl } from "@/validations/url.validations";
 
 export default function ShortUrlForm({ user }) {
   const [url, setUrl] = useState("");
@@ -13,6 +14,12 @@ export default function ShortUrlForm({ user }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const toastId = toast.loading("Shortening your URL");
+
+    if (!validateUrl(url)) {
+      toast.error("Invalid URL", { id: toastId });
+      return;
+    }
+
     try {
       const res = await fetch("/api/short-url", {
         method: "POST",
