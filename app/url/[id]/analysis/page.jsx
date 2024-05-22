@@ -28,7 +28,11 @@ export default async function Analysis({ params }) {
                     <p>
                       <span className="text-primary">Time</span>
                     </p>
-                    <p>{dayjs(item?.time).format("MMM DD, YYYY hh:mm A")}</p>
+                    <p>
+                      {dayjs(item?.time.toLocaleString()).format(
+                        "MMM DD, YYYY hh:mm A"
+                      )}
+                    </p>
                   </div>
                 );
               })}
