@@ -23,9 +23,9 @@ export default async function Navbar() {
       <SignedIn>
         <div className="flex items-center gap-2">
           <ToggleTheme />
-          <Link href={`/short-url`}>
+          {/* <Link href={`/short-url`} className="hidden sm:block">
             <Button>Short Url</Button>
-          </Link>
+          </Link> */}
           <Link href={`/dashboard`}>
             <Button>Dashboard</Button>
           </Link>
@@ -37,7 +37,7 @@ export default async function Navbar() {
           <ToggleTheme />
           <Link href={`/sign-in`}>
             <Button>Sign In</Button>
-          </Link> 
+          </Link>
         </div>
       </SignedOut>
     </nav>

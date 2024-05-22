@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/table";
 import React from "react";
 import TableData from "@/components/TableData";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default async function Dashboard() {
   const user = await currentUser();
@@ -31,6 +33,15 @@ export default async function Dashboard() {
         <p className="text-gray-500">
           You have created {shortUrls?.length} short URLs.
         </p>
+      </div>
+
+      <div className="my-3 flex flex-col gap-1">
+        <h2>
+          Want to create a new short URL? Click the button below to get started.
+        </h2>
+        <Link href={`/short-url`}>
+          <Button>Short Url</Button>
+        </Link>
       </div>
       <div className="mt-5">
         <Table>
