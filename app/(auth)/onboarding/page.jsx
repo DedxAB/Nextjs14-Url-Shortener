@@ -27,12 +27,12 @@ export default async function Onboarding() {
   };
 
   return (
-    <>
+    <div className="my-5">
       <h2>Onboarding</h2>
       <p>Complete your profile to get started with the app.</p>
       <div>
         <AccountProfileForm userData={userData} />
       </div>
-    </>
+    </div>
   );
 }
